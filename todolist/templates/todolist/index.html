@@ -1,0 +1,23 @@
+<h2>so here 's  the list to which you can add or delete the to do items.</h2>
+
+<ul>
+    <li>temporary item A </li>
+    <li>temporary item B </li>
+</ul>
+
+<ul>
+    {% for a in all_todo_items %}
+    <li>{{a.content}}
+    <form action="deletetodo/{{a.id}}/"
+          style="display:inline;"
+          method="post">{%csrf_token%}
+        <input type="submit" value="Delete"/>
+    </form>
+    </li>
+    {%endfor%}
+</ul>
+<!-- post method type of rquest to data base-->
+<form action="addtodo/" method="post">{%csrf_token%}
+   <input type="text" name="content"/>
+    <input type="submit" value="Add"/>
+</form>
